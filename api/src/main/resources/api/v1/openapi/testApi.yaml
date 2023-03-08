@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Test V1 API
+  description: V1 of the test API.
+  version: 0.0.1
+servers:
+  - url: 'v1/'
+paths:
+  /test/{id}/test:
+    get:
+      summary: get test
+      operationId: getTest
+      tags:
+        - test
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the test
+          schema:
+            $ref: '../schemas/core/UUID.yaml'
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/test/Test.yaml'
+        '400':
+          description: invalid id
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/core/ErrorResponse.yaml'
+        '404':
+          description: unknown id
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/core/ErrorResponse.yaml'
+        '500':
+          description: server error
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/core/ErrorResponse.yaml'

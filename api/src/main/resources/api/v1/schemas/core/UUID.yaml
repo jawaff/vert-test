@@ -1,0 +1,5 @@
+type: string
+pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+minLength: 36
+maxLength: 36
+example: '11111111-2222-3333-4444-555555555555'

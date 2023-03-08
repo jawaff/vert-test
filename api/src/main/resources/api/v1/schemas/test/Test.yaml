@@ -1,0 +1,13 @@
+type: object
+required:
+  - name
+  - types
+properties:
+  name:
+    type: string
+    maxLength: 300
+  types:
+    type: array
+    minItems: 1
+    items:
+      $ref: './TestType.yaml'

@@ -1,0 +1,33 @@
+type: object
+required:
+  - id
+  - createdBy
+  - createdAt
+  - updatedBy
+  - updatedAt
+  - archived
+  - someCount
+properties:
+  id:
+    $ref: '../core/UUID.yaml'
+  createdBy:
+    type: string
+    maxLength: 300
+    example: 'mheadroom'
+  createdAt:
+    type: string
+    format: date-time
+  updatedBy:
+    type: string
+    maxLength: 300
+    example: 'mheadroom'
+  updatedAt:
+    type: string
+    format: date-time
+  archived:
+    type: boolean
+  someCount:
+    type: integer
+    minimum: 0
+allOf:
+  - $ref: './Test.yaml'

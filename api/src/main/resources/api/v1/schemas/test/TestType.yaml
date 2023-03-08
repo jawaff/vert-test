@@ -1,0 +1,10 @@
+type: string
+# Replacing the below "oneOf" with an enumeration fixes the deadlock.
+#enum: [ "Test1", "Test2", "Test3", "Test4", "Test5", "Test6" ]
+oneOf:
+  - $ref: './Test1Type.yaml'
+  - $ref: './Test2Type.yaml'
+  - $ref: './Test3Type.yaml'
+  - $ref: './Test4Type.yaml'
+  - $ref: './Test5Type.yaml'
+  - $ref: './Test6Type.yaml'

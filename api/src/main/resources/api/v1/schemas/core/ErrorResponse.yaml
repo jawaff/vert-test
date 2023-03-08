@@ -1,0 +1,9 @@
+type: object
+required:
+  - title
+  - cause
+properties:
+  title:
+    type: string
+  cause:
+    type: string

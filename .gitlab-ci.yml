@@ -1,0 +1,38 @@
+---
+image: nexus.eitccorp.com/gitlab/ci-build:bdp4
+
+services:
+  - name: nexus.eitccorp.com/gitlab/dind:latest
+    alias: dind
+
+variables:
+  DOCKER_HOST: "tcp://dind:2375"
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - mvn clean verify -e -B -U -DtrimStackTrace=false -DskipTests
+  artifacts:
+    when: always
+    paths:
+      - ./**/target
+    expire_in: 1 hour
+
+unit-tests:
+  stage: test
+  script:
+    - mvn verify -e -B -U -DtrimStackTrace=false
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - ./*/target/surefire-reports/TEST-*.xml
+    paths:
+      - ./*/target/surefire-reports/*.txt
+    expire_in: 1 week
